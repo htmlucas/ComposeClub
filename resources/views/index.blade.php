@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/bootstrap-4.5.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/estilo.css">
-    <title>Document</title>
+    <link REL="SHORTCUT ICON" HREF="assets/img/log1.png">
+    <title>Compose Club</title>
 </head>
 <body id="backgroundzin">
     <div  class="container">
@@ -21,37 +22,32 @@
                                         <hr>
                                     </div>
                                     <div class="panel-body">
-                                        <form action="" id="login-form">
+                                        <form action="{{ url('/create') }}" id="login-form" method="POST">
                                             <!--formulario de logar--> 
                                             <div class="col form-group ">
-                                                <input type="text" name="name" id="name"  class="form-control" placeholder="Email">
+                                                <input type="text" name="nomedeusuario" id="name"  class="form-control" placeholder="Email">
                                             </div>
                                             <div class="col form-group">
-                                                <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                                                <input type="password" name="senha" id="password" class="form-control" placeholder="Senha">
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <button type="submit" class="btn btn-primary ">Entrar</button>
                                             </div>
                                         </form>        
-                                    <form action="" id="register-form" method="POST" style="display: none;"> 
+                                    <form action="{{ route('usuario.store') }}" id="register-form" method="POST" style="display: none;"> 
+                                        @csrf
                                         <!--Formulario de criação de conta-->
                                         <div class="form-group">
-                                            <input type="text" name="nome" id="nome"  class="form-control" placeholder="Nome Completo" value="">
+                                            <input type="text" name="nome_completo" id="nome"  class="form-control" placeholder="Nome Completo" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="nick" id="nick"  class="form-control" placeholder="Nome de Usuário" value="">
+                                            <input type="text" name="nomedeusuario" id="nick"  class="form-control" placeholder="Nome de Usuário" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="email" id="email"  class="form-control" placeholder="Telefone" value="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="password" id="password" class="form-control" placeholder="E-mail">
+                                            <input type="email" name="email" id="email"  class="form-control" placeholder="E-mail" value="">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="senha2" id="senha2"  class="form-control" placeholder="Confirmar Senha">
                                         </div>
                                         <div class="form-group">
                                                 <div class="d-flex justify-content-center">
@@ -59,6 +55,7 @@
                                                 </div>     
                                         </div>
                                     </form>
+                                    <hr>
                                     </div>           
                                 </div>
                         </div>

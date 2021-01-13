@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::get('/','UsuarioController@index')->name("usuario.index");
+
+Route::post('/usuario','UsuarioController@store')->name('usuario.store');

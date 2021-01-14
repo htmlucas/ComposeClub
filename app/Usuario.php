@@ -3,8 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
-class Usuario extends Model
+class Usuario extends User
 {
-    //protected $table = 'usuarios';
+    protected $fillable=[
+        'nome_completo',
+        'nomedeusuario',
+        'email',
+        'senha'
+    ];
+
+    protected $hidden = [
+        'senha'
+    ];
 }

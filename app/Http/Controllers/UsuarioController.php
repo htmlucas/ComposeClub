@@ -11,22 +11,20 @@ class UsuarioController extends Controller
         return view ('index');
     }
 
-    public function create()
-    {
-        return(' porra');
-    }
 
     public function store(Request $request)
     {
-        $usuario = new Usuario;
+        //$usuario = new Usuario;
 
-        $usuario->nome_completo = $request->nome_completo;
-        $usuario->nomedeusuario = $request->nomedeusuario;
-        $usuario->email = $request->email;
-        $usuario->senha = $request->senha;
+        //$usuario->nome_completo = $request->nome_completo;
+        //$usuario->nomedeusuario = $request->nomedeusuario;
+        //$usuario->email = $request->email;
+        //$usuario->senha = $request->senha;
 
-        $usuario->save();
+       // $usuario->save();
 
-        return redirect()->route('usuario.index');
+        Usuario::create($request->all());
+
+        return redirect()->route('usuario.index')->with('msg_success','Usuario cadastrado com sucesso !');
     }
 }

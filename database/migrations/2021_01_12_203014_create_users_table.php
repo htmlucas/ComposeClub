@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nome_completo')->length(255);
             $table->string('nomedeusuario')->length(100)->unique();
             $table->string('email')->length(50)->unique();
-            $table->string('senha')->length(200);
+            $table->string('password')->length(200);
             $table->string('fotoperfil')->length(200)->nullable();
             $table->string('fotocapa')->length(200)->nullable();
             $table->timestamps();

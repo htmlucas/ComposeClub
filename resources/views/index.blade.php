@@ -22,20 +22,29 @@
                                             </div>
                                         </div>
                                         @endif
+                                        @if(session()->has('msg_error')) 
+                                        <div class="row">
+                                            <div class="col-12 alert alert-danger" role="alert">
+                                                {{ session()->get('msg_error') }}
+                                            </div>
+                                        </div>
+                                        @endif
                                         <div class="d-flex justify-content-between align-items-center  ">                                         
                                             <a href="#" class="active" id="login-form-link">Logar</a>
                                             <a href="#" id="register-form-link">Cadastrar</a>
                                         </div>
-                                        <hr>
+                                        
                                     </div>
+                                    <hr>
                                     <div class="panel-body">
-                                        <form action="{{ url('/create') }}" id="login-form" method="POST">
+                                        <form action="{{ route('login.login') }}" id="login-form" method="POST">
+                                            @csrf
                                             <!--formulario de logar--> 
                                             <div class="col form-group ">
                                                 <input type="text" name="nomedeusuario" id="name"  class="form-control" placeholder="Email">
                                             </div>
                                             <div class="col form-group">
-                                                <input type="password" name="senha" id="password" class="form-control" placeholder="Senha">
+                                                <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <button type="submit" class="btn btn-primary ">Entrar</button>
@@ -54,7 +63,7 @@
                                             <input type="email" name="email" id="email"  class="form-control" placeholder="E-mail" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+                                            <input type="password" name="password" id="senha" class="form-control" placeholder="Senha">
                                         </div>
                                         <div class="form-group">
                                                 <div class="d-flex justify-content-center">

@@ -11,24 +11,10 @@
 <body id="backgroundzin">
     <div  class="container">
                 <div  class="d-flex col-10 offset-2 col-md-3 offset-md-9 align-items-center" style="height: 80vh;">
-                    <div class="card mt-2" style="width: 18rem;">
+                    <div class="card mt-0" style="width: 18rem;">
                         <div class="card-body  ">
                                 <div class="form-group ">
                                     <div class="panel-heading">
-                                        @if(session()->has('msg_success')) 
-                                        <div class="row">
-                                            <div class="col-12 alert alert-success" role="alert">
-                                                {{ session()->get('msg_success') }}
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @if(session()->has('msg_error')) 
-                                        <div class="row">
-                                            <div class="col-12 alert alert-danger" role="alert">
-                                                {{ session()->get('msg_error') }}
-                                            </div>
-                                        </div>
-                                        @endif
                                         <div class="d-flex justify-content-between align-items-center  ">                                         
                                             <a href="#" class="active" id="login-form-link">Logar</a>
                                             <a href="#" id="register-form-link">Cadastrar</a>
@@ -72,6 +58,21 @@
                                         </div>
                                     </form>
                                     <hr>
+
+                                    @if(session()->has('msg_success')) 
+                                        <div class="row">
+                                            <div class="col-12 alert alert-success" role="alert">
+                                                {{ session()->get('msg_success') }}
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(session()->has('msg_error')) 
+                                        
+                                            <div class="col-12 alert alert-danger" role="alert">
+                                                {{ session()->get('msg_error') }}
+                                            </div>
+                                        
+                                    @endif
                                     </div>           
                                 </div>
                         </div>

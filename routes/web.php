@@ -15,8 +15,17 @@ use Illuminate\Support\Facades\Route;
 Route::post('login','LoginController@login')->name('login.login');
 Route::get('/usuarios/perfil','PerfilController@index')->name('perfil.index');
 
-Route::resource('users','UsuarioController');
+Route::get('logout','LoginController@logout')->name('login.logout');
 
-Route::get('/','UsuarioController@index')->name("usuario.index");
 
-Route::post('/usuario','UsuarioController@store')->name('usuario.store');
+
+    Route::get('/novacomposicao','ComposicaoController@home')->name('composicao.home');
+
+
+
+    Route::resource('users','UsuarioController');
+
+    Route::get('/','UsuarioController@index')->name("usuario.index");
+
+    Route::post('/usuario','UsuarioController@store')->name('usuario.store');
+

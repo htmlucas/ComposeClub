@@ -13,7 +13,7 @@ class CreateCompositionTable extends Migration
      */
     public function up()
     {
-        Schema::create('composicao', function (Blueprint $table) {
+        Schema::create('composicaos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo')->length(50);
             $table->string('categoria')->length(45);
@@ -23,7 +23,6 @@ class CreateCompositionTable extends Migration
             $table->string('escrito')->length(45);
             $table->string('soundcloud')->length(200);
             $table->string('youtube')->length(200);
-            $table->string('audio')->length(200);
             $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
 
@@ -38,6 +37,6 @@ class CreateCompositionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('composicao');
+        Schema::dropIfExists('composicaos');
     }
 }

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/estilo.css">
-    <link REL="SHORTCUT ICON" HREF="../assets/img/log1.png">
+    <link rel="stylesheet" href="/assets/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/estilo.css">
+    <link REL="SHORTCUT ICON" HREF="/assets/img/log1.png">
     <title>Compose Club</title>
     <script src="https://cdn.tiny.cloud/1/jsfi6p2g66ydz0p1754mpnoeidc2dc39q9hnlkjtshsrhqrs/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
@@ -14,6 +14,8 @@
         tinymce.init({
           selector: 'textarea',
           plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+          anchor_bottom: '#mybottom',
+          anchor_top: '#mytop',
           toolbar_mode: 'floating',
        });
       </script>  
@@ -30,32 +32,34 @@
     @endif
 
       <div class="container">
-        <form action="{{route('composicao.store')}}" method="POST">
+        <form action="{{route('composicoes.update',$composicoes->id)}}" method="POST">
         @csrf
+        @method('PUT') 
+
         <div class="form-row">
             <div class="col-sm-3 form-group">
                 <label for="titulo">Titulo</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old ('titulo','')}}">
+                <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old ('titulo',$composicoes->titulo)}}">
             </div>
-
             <div class="col form-group">
                 <label for="categoria">Selecione a Categoria da Composição</label>
                 <select name="categoria" id="categoria" class="form-control">
-                    <option value="POP">POP</option>
-                    <option value="R&B">R&B</option>
-                    <option value="ROCK">ROCK</option>
-                    <option value="SAMBA">SAMBA</option>
-                    <option value="PAGODE">PAGODE</option>
-                    <option value="MPB">MPB</option>
-                    <option value="RAP">RAP</option>
-                    <option value="SERTANEJO">SERTANEJO</option>
+                    <option @if ($composicoes->categoria == 'POP'){{ 'selected'}} @endif  value="POP">POP</option>
+                    <option @if ($composicoes->categoria == 'R&B'){{'selected'}} @endif value="R&B">R&B</option>
+                    <option @if ($composicoes->categoria == 'ROCK'){{'selected'}} @endif value="ROCK">ROCK</option>
+                    <option @if ($composicoes->categoria == 'SAMBA'){{'selected'}} @endif value="SAMBA">SAMBA</option>
+                    <option @if ($composicoes->categoria == 'PAGODE'){{'selected'}} @endif value="PAGODE">PAGODE</option>
+                    <option @if ($composicoes->categoria == 'MPB') {{'selected'}} @endif value="MPB">MPB</option>
+                    <option @if ($composicoes->categoria == 'RAP') {{'selected'}} @endif value="RAP">RAP</option>
+                    <option @if ($composicoes->categoria == 'SERTANEJO'){{'selected'}} @endif value="SERTANEJO">SERTANEJO</option>
                 </select>
             </div>
         </div> 
         <div class="form-row">
             <div class="col-sm form-group">
                 <label for="texto">Letra da Música:</label>
-                    <textarea name="texto"  value="testeeeeeeeeeeeeeeeeeeeeeeeeee" id="texto" class="form-control" cols="80" rows="10" placeholder="Coloque aqui a sua letra...">
+                    <textarea name="texto"  id="texto" class="form-control" >
+                        {{$composicoes->texto}}
                     </textarea>      
                     
             </div>    
@@ -67,25 +71,25 @@
         <div class="form-row">
             <div class="col-sm-4">
                 <label for="participacao">Participação</label>
-                <input type="text" id="participacao" value="{{old('participacao','')}}" name="participacao" class="form-control">
+                <input type="text" id="participacao" value="{{old('participacao',$composicoes->participacao)}}" name="participacao" class="form-control">
             </div>
             <div class="col-sm-4">
                 <label for="produzido">Produzido</label>
-                <input type="text" id="produzido" value="{{old('produzido','')}}" name="produzido" class="form-control">
+                <input type="text" id="produzido" value="{{old('produzido',$composicoes->produzido)}}" name="produzido" class="form-control">
             </div>
             <div class="col-sm-4">
                 <label for="escrito">Escrito</label>
-                <input type="text" id="escrito" value="{{old('escrito','')}}" name="escrito" class="form-control">
+                <input type="text" id="escrito" value="{{old('escrito',$composicoes->escrito)}}" name="escrito" class="form-control">
             </div>
         </div>
         <div class="form-row">
             <div class="col-sm-6">
                 <label for="soundcloud">soundcloud</label>
-                <input type="text" id="soundcloud" value="{{old('soundcloud','')}}" name="soundcloud" class="form-control">
+                <input type="text" id="soundcloud" value="{{old('soundcloud',$composicoes->soundcloud)}}" name="soundcloud" class="form-control">
             </div>
             <div class="col-sm-6">
                 <label for="youtube">youtube</label>
-                <input type="text" id="youtube" value="{{old('youtube','')}}" name="youtube"  class="form-control">
+                <input type="text" id="youtube" value="{{old('youtube',$composicoes->youtube)}}" name="youtube"  class="form-control">
             </div>
         </div>
         <div class="form-row">
@@ -102,8 +106,8 @@
 
 
     
-    <script src="../assets/bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
-    <script src="../assets/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-4.5.3-dist/js/popper.min.js"></script>     
+    <script src="/assets/bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
+    <script src="/assets/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <script src="/assets/bootstrap-4.5.3-dist/js/popper.min.js"></script>     
 </body>
 </html>

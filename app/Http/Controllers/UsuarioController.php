@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Composicao;
 
 class UsuarioController extends Controller
 {
@@ -23,8 +24,14 @@ class UsuarioController extends Controller
 
        // $usuario->save();
 
+       
+
         Usuario::create($request->all());
 
         return redirect()->route('usuario.index')->with('msg_success','Usuario cadastrado com sucesso !');
     }
+
+    
+    
 }
+

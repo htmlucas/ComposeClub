@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class Usuario extends Authenticatable
 {
     protected $fillable=[
+        'id',
         'nome_completo',
         'nomedeusuario',
         'email',
@@ -26,4 +27,10 @@ class Usuario extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public function composicoes()
+    {
+        return $this->hasMany('App\Composicao');
+    }
+    
+   
 }

@@ -16,7 +16,7 @@ class LoginController extends Controller
         ];
         if(Auth::attempt($credentials))
         {
-            return redirect()->route('perfil.index');
+            return redirect()->route('dashboard.index');
         }
 
         return redirect()->route('usuario.index')->with('msg_error','Autenticação Falhou');

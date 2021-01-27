@@ -9,9 +9,21 @@
     <title>Compose Club</title>
 </head>
 <body>
+
+    @if(session()->has('msg_success'))
+        <div class="row mt-3 mb-3">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    {{session()->get('msg_success')}}
+                </div>
+            </div>
+        </div>
+    @endif
+        
     <h1>Bem vindo {{ auth()->user()->nomedeusuario }} </h1>
     <a href="{{ route('login.logout')}}" class="btn btn-danger">Sair</a>
-    <a href="" class="btn btn-primary">Criar uma nova composição</a>
+    <a href="{{ route ('composicoes.create')}}" class="btn btn-primary">Criar uma nova composição</a>
+    <a href="{{ route('composicoes.index')}}" class="btn btn-success">Acessar suas composicoes</a>
 
 
 

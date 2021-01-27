@@ -12,20 +12,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('login','LoginController@login')->name('login.login');
-Route::get('/usuarios/perfil','PerfilController@index')->name('perfil.index');
-
-Route::get('logout','LoginController@logout')->name('login.logout');
 
 
-
-    Route::get('/novacomposicao','ComposicaoController@home')->name('composicao.home');
-
-
-
+    //Usuarios
     Route::resource('users','UsuarioController');
-
+    Route::post('/usuario','UsuarioController@store')->name('usuario.store');
     Route::get('/','UsuarioController@index')->name("usuario.index");
 
-    Route::post('/usuario','UsuarioController@store')->name('usuario.store');
+    //login
+    Route::post('login','LoginController@login')->name('login.login');    
 
+
+    //login
+    Route::get('logout','LoginController@logout')->name('login.logout');
+
+    
+Route::middleware('auth')->group(function()
+{
+    //Dashboard
+    Route::get('/dashboard','DashBoardController@index')->name('dashboard.index');
+
+    //Composições
+    Route::resource('composicoes','ComposicaoController');
+    Route::get('composicoes/{id}/edit','ComposicaoController@edit')->name('composicao.edit');
+    Route::post('/composicoes','ComposicaoController@store')->name('composicao.store');
+    Route::delete('/composicoes/{id}','ComposicaoController@destroy')->name('composicao.destroy');
+
+    
+});
